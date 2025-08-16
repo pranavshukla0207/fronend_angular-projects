@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IRole } from '../model/interface/role';
+import { APIResponse, IRole } from '../model/interface/role';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
@@ -19,7 +19,7 @@ export class Roles implements OnInit {
   }
 
   getAllRoles() {
-    this.http.get('https://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles').subscribe((res: any) => {
+    this.http.get<APIResponse>('https://freeapi.miniprojectideas.com/api/ClientStrive/GetAllRoles').subscribe((res: APIResponse) => {
       this.roles = res.data;
     })
 

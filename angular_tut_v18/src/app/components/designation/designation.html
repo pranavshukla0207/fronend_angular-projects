@@ -1,1 +1,23 @@
-<p>designation works!</p>
+<div class="row">
+  @if(isLoader){
+  <div class="col-12 text-center">
+    <div class="spinner-border spinner-border-sm"></div>
+  </div>
+  }
+  @else {
+  @for (items of designations; track items) {
+  <div class="col-3">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{items.designationId}}</h4>
+        <p class="card-text">{{items.designation}}</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+  }
+
+  }
+
+</div>
