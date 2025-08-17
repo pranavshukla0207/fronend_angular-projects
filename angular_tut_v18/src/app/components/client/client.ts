@@ -4,13 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client-service';
 import { APIResponse } from '../model/interface/role';
 import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { ClientModal } from '../model/class/ClientModal';
+import { FormsModule } from '@angular/forms';
+import { ClientService } from '../../services/client-service';
+import { APIResponse } from '../model/interface/role';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-client',
   imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './client.html',
   styleUrl: './client.scss'
 })
+export class Client implements OnInit {
 export class Client implements OnInit {
 
   clientObj: ClientModal = new ClientModal();
@@ -56,6 +64,6 @@ export class Client implements OnInit {
   }
 
   onEditClient(client: ClientModal) {
-    this.clientObj = { ...client }; 
+    this.clientObj = { ...client };
   }
 }
