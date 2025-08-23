@@ -15,7 +15,7 @@ export class ClientService{
   http = inject(HttpClient);
 
   getAllClients() : Observable<APIResponse> {
-    return this.http.get<APIResponse>(environment.API_URL+'GetAllClients');
+    return this.http.get<APIResponse>(environment.API_URL+'GetAllEmployee');
   }
 
   addUpdate(object: ClientModal) : Observable<APIResponse> {
