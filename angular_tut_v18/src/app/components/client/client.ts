@@ -3,11 +3,11 @@ import { ClientModal } from '../model/class/ClientModal';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client-service';
 import { APIResponse } from '../model/interface/role';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-client',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,UpperCasePipe,DatePipe],
   templateUrl: './client.html',
   styleUrl: './client.scss'
 })
@@ -16,6 +16,7 @@ export class Client implements OnInit {
   clientObj: ClientModal = new ClientModal();
   clients: ClientModal[] = [];
   clientService = inject(ClientService);
+  currDate: Date = new Date();
 
   onSaveClient() {
     debugger;
