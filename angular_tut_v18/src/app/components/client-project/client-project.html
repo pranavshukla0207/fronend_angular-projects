@@ -14,20 +14,33 @@
                     Sr No.
                   </th>
                   <th>
-                    Company Name
+                    Client Name
                   </th>
                   <th>
-                    Contact No
+                    Project
                   </th>
                   <th>
-                    City
+                    Employee
                   </th>
                   <td>
-                    Action
+                    End Date
                   </td>
                 </tr>
               </thead>
               <tbody>
+                @for (item of projectList(); track $index) {
+                <tr>
+                  <td>{{$index + 1}}</td>
+                  <td>{{item.clientName}}</td>
+                  <td>{{item.projectName}}</td>
+                  <td>{{item.empName}}</td>
+                  <td>{{item.expectedEndDate | date:'dd-MMM-yyyy'}}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary">Edit</button>
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                  </td>
+                </tr>
+                }
               </tbody>
             </table>
           </div>

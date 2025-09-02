@@ -1,12 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client-service';
-import { APIResponse, IEmployee } from '../model/interface/role';
+import { APIResponse, IClientProject, IEmployee } from '../model/interface/role';
 import { ClientModal } from '../model/class/ClientModal';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-client-project',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,DatePipe],
   templateUrl: './client-project.html',
   styleUrl: './client-project.scss'
 })
@@ -31,10 +32,12 @@ export class ClientProject implements OnInit {
   clientSrv = inject(ClientService);
   empList: IEmployee[] = [];
   clientList: ClientModal[] = [];
+  projectList = signal<IClientProject[]>([]);
 
   ngOnInit(): void {
     this.getAllClients();
     this.getAllEmployees();
+    this.getAllClientProjects();
   }
 
   getAllEmployees() {
@@ -46,6 +49,12 @@ export class ClientProject implements OnInit {
   getAllClients() {
     this.clientSrv.getAllClients().subscribe((res: APIResponse) => {
       this.clientList = res.data;
+    });
+  }
+
+    getAllClientProjects() {
+    this.clientSrv.getAllProjects().subscribe((res: APIResponse) => {
+      this.projectList.set(res.data);
     });
   }
   onSaveProject() {

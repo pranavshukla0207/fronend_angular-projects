@@ -22,6 +22,10 @@ export class ClientService {
     return this.http.get<APIResponse>(environment.API_URL + 'GetAllClients');
   }
 
+  getAllProjects(): Observable<APIResponse> {
+    return this.http.get<APIResponse>(environment.API_URL + 'GetAllClientProjects');
+  }
+
   addUpdate(object: ClientModal): Observable<APIResponse> {
     return this.http.post<APIResponse>(environment.API_URL + 'AddUpdateClient', object);
   }
